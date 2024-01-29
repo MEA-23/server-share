@@ -41,7 +41,7 @@ If you need to customize the server's behavior, you can do so by modifying the `
 
 ### Support
 
-If you encounter any issues or have questions about the File Server, feel free to open an issue on GitHub or reach out to [your email/contact information].
+If you encounter any issues or have questions about the File Server, feel free to open an issue on GitHub or reach out to mea.xuser23@gmail.com.
 
 ### License
 
