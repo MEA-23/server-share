@@ -45,6 +45,6 @@ If you encounter any issues or have questions about the File Server, feel free t
 
 ### License
 
-This project is licensed under the [License Name] License. See the LICENSE file for details.
+This project is licensed under the GNU General Public License (GPL) v3 License. See the LICENSE file for details.
 
 Thank you for using the File Server! We hope it simplifies sharing files within your network.
