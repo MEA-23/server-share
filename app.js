@@ -137,7 +137,7 @@ app.get("/", (req, res) => {
   res.send(content);
 });
 
-const PORT = 3000;
+let PORT = 3000;
 // Function to check if LAN connection is available
 function hasLANConnection() {
   const networkInterfaces = os.networkInterfaces();
@@ -163,14 +163,26 @@ if (hasLANConnection()) {
   // If LAN connection not available, use WiFi IP address
   ipAddress = getWifiIpAddress();
 }
-
+let server;
+const onListen = () => {
+  console.log(`Server running at http://${ipAddress}:${PORT}`);
+};
 if (ipAddress) {
-  app.listen(PORT, ipAddress, () => {
-    console.log(`Server started on http://${ipAddress}:${PORT}`);
-  });
+  server = app.listen(PORT, ipAddress, onListen);
 } else {
   console.error("You are not connected to any network.");
 }
+server.on("error", (err) => {
+  // console.log("Error: ", err);
+  if (err.code === "EADDRINUSE") {
+    console.log(`Port ${PORT} is already in use.`);
+    console.log(`Trying another port...`);
+    PORT++;
+    server.listen(PORT, ipAddress);
+  } else {
+    console.log("Error: ", err);
+  }
+});
 
 // Function to get LAN IP address
 function getLocalIpAddress() {
